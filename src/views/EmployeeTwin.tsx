@@ -23,7 +23,7 @@ export const EmployeeTwin: React.FC = () => {
   const [messages, setMessages] = useState<{ role: string; text: string }[]>([
     { role: 'ai', text: 'Hi Alex! I am your personal AI Twin representation. I assist you with self-reflections, project logs, and matching your skills with organization goals. Ask me anything about your career roadmap.' }
   ]);
-  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [, setIsEditOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   

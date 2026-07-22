@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 import { Crosshair, BookOpen, ArrowRight, TrendingUp, Edit3, PlayCircle, ExternalLink, Activity, Milestone, Compass, CheckCircle2, ChevronRight } from 'lucide-react';
-import { Modal } from '../components/Modal';
+import { Modal } from '../../components/Modal';
 
 export const CareerCoach: React.FC = () => {
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);

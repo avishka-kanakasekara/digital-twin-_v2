@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { Dashboard } from './views/Dashboard';
-import { EmployeeTwin } from './views/EmployeeTwin';
-import { OrgSimulator } from './views/OrgSimulator';
-import { AtRiskRadar } from './views/AtRiskRadar';
-import { CareerCoach } from './views/CareerCoach';
-import { WorkforcePlanning } from './views/WorkforcePlanning';
-import { TeamBuilder } from './views/TeamBuilder';
+import { Dashboard } from './views/organization/Dashboard';
+import { EmployeeTwin } from './views/employee/EmployeeTwin';
+import { OrgSimulator } from './views/organization/OrgSimulator';
+import { AtRiskRadar } from './views/organization/AtRiskRadar';
+import { CareerCoach } from './views/employee/CareerCoach';
+import { WorkforcePlanning } from './views/organization/WorkforcePlanning';
+import { TeamBuilder } from './views/organization/TeamBuilder';
 
 function App() {
   return (

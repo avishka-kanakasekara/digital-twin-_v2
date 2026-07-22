@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 import { Download, Edit, Plus, Clock, Target, Trash2, ShieldAlert, Sparkles, TrendingUp, CheckCircle2, ListTodo, X, Bot, Activity, AlertCircle, Briefcase, MapPin } from 'lucide-react';
-import { AICareerAssistant } from '../components/chat/AICareerAssistant';
+import { AICareerAssistant } from '../../components/chat/AICareerAssistant';
 
 interface Task {
   text: string;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from '../components/Card';
+import { Card } from '../../components/Card';
 import { Users, TrendingUp, Layers, Target, Activity, Minus, Plus, Equal, AlertCircle, ArrowUpRight, CheckCircle2, X } from 'lucide-react';
 import { ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 

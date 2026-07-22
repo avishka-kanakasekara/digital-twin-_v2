@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 import { Users, Wand2, ShieldCheck, CheckCircle2, Search, SlidersHorizontal, GitMerge, Star, Check, Target, Activity, HeartHandshake } from 'lucide-react';
 
 const mockOptionA = {

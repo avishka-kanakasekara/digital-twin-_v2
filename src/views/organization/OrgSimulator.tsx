@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 import { Sliders, RefreshCw, Activity, Target, Zap, UserMinus } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, AreaChart, Area } from 'recharts';
 

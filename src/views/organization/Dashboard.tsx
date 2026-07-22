@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Card } from '../components/Card';
+import { Card } from '../../components/Card';
 
-import { Modal } from '../components/Modal';
+import { Modal } from '../../components/Modal';
 import { Users, Target, TrendingUp, ChevronDown, Activity, ExternalLink, Filter, HeartPulse, BrainCircuit, Sparkles } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { Link } from 'react-router-dom';

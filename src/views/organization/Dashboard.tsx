@@ -5,32 +5,7 @@ import { Modal } from '../../components/Modal';
 import { Users, Target, TrendingUp, ChevronDown, Activity, ExternalLink, Filter, HeartPulse, BrainCircuit, Sparkles } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { Link } from 'react-router-dom';
-
-const mockGrowthData = [
-  { month: 'Jan', headcount: 1150 },
-  { month: 'Feb', headcount: 1180 },
-  { month: 'Mar', headcount: 1195 },
-  { month: 'Apr', headcount: 1210 },
-  { month: 'May', headcount: 1225 },
-  { month: 'Jun', headcount: 1248 },
-];
-
-const mockDeptPerformance = [
-  { name: 'Engineering', score: 92, target: 90 },
-  { name: 'Sales', score: 85, target: 88 },
-  { name: 'Marketing', score: 95, target: 90 },
-  { name: 'HR', score: 88, target: 85 },
-  { name: 'Product', score: 94, target: 92 },
-];
-
-
-const mockDrillDownEmployees = [
-  { id: 1, name: 'Sarah Jenkins', role: 'UX Designer', score: 85 },
-  { id: 2, name: 'David Chen', role: 'Backend Engineer', score: 78 },
-  { id: 3, name: 'Elena Rodriguez', role: 'Sales Lead', score: 62 },
-  { id: 4, name: 'Michael Chang', role: 'Product Manager', score: 55 },
-  { id: 5, name: 'Anita Patel', role: 'QA Engineer', score: 41 },
-];
+import { mockGrowthData, mockDeptPerformance, mockDrillDownEmployees } from '../../dummy/organization/dashboardData';
 
 export const Dashboard: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All Departments');
@@ -42,8 +17,14 @@ export const Dashboard: React.FC = () => {
     <div className="flex flex-col gap-6 relative">
       <div className="flex justify-between items-end">
         <div>
-          <h1 className="text-3xl font-extrabold mb-2 text-primary tracking-tight">Executive Dashboard</h1>
+          <h1 className="text-3xl font-extrabold mb-1 text-primary tracking-tight">Executive Dashboard</h1>
           <p className="text-secondary text-sm font-medium">Organization Digital Twin • High-level KPIs and intelligent insights.</p>
+          <div className="flex items-center gap-2 mt-2.5">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 bg-success-light border border-success/30 rounded-md text-xs font-bold text-success-dark shadow-sm">
+              <Activity size={12} className="animate-pulse" /> Live Aggregation
+            </span>
+            <span className="text-[10px] font-extrabold text-tertiary uppercase tracking-wider">Last Sync: Today, 02:00 AM (Nightly Job)</span>
+          </div>
         </div>
         
         {/* Global Filters */}
@@ -129,19 +110,19 @@ export const Dashboard: React.FC = () => {
           </div>
         </Card>
 
-        <Card className="glass flex flex-col gap-5 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-          <div className="absolute -right-6 -top-6 w-24 h-24 bg-warning/10 rounded-full blur-xl group-hover:bg-warning/20 transition-colors"></div>
+        <Card className="glass flex flex-col gap-5 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden border border-danger/30 bg-danger/5">
+          <div className="absolute -right-6 -top-6 w-24 h-24 bg-danger/10 rounded-full blur-xl group-hover:bg-danger/20 transition-colors"></div>
           <div className="flex justify-between items-start z-10">
             <div>
-              <p className="text-[10px] text-secondary font-black uppercase tracking-widest mb-1">Emp Satisfaction</p>
-              <h3 className="text-4xl font-black text-primary">4.6<span className="text-xl text-secondary">/5</span></h3>
+              <p className="text-[10px] text-danger font-black uppercase tracking-widest mb-1 flex items-center gap-1"><Sparkles size={10} className="animate-pulse"/> Anomaly Flagged</p>
+              <h3 className="text-4xl font-black text-danger">3.2<span className="text-xl text-danger/50">/5</span></h3>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-warning-light flex items-center justify-center text-warning-dark shadow-sm border border-warning/30">
+            <div className="w-12 h-12 rounded-2xl bg-danger/10 flex items-center justify-center text-danger shadow-sm border border-danger/30">
               <Sparkles size={24} />
             </div>
           </div>
-          <div className="text-xs text-success flex items-center gap-1.5 font-bold bg-success-light/50 w-fit px-2.5 py-1 rounded-md z-10">
-            <TrendingUp size={14} /> Peak engagement
+          <div className="text-xs text-danger-dark flex items-center gap-1.5 font-bold bg-danger/10 w-fit px-2.5 py-1 rounded-md z-10 shadow-sm">
+            <TrendingUp size={14} className="rotate-180" /> Sudden Dip Detected
           </div>
         </Card>
       </div>
@@ -152,25 +133,25 @@ export const Dashboard: React.FC = () => {
         {/* AI Insights Panel */}
         <Card className="col-span-1 glass flex flex-col h-[380px] p-0 overflow-hidden relative">
           <div className="p-6 border-b border-primary/10 bg-gradient-to-r from-primary-light to-white">
-            <h3 className="text-lg font-extrabold text-primary flex items-center gap-2">
-              <BrainCircuit size={20} className="text-secondary"/> AI Executive Insights
+            <h3 className="text-base font-extrabold text-primary flex items-center gap-2">
+              <BrainCircuit size={18} className="text-secondary"/> ML Anomaly Detection & Insights
             </h3>
           </div>
           <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-4" style={{ scrollbarWidth: 'thin' }}>
             
+            <div className="p-4 bg-danger/10 border border-danger/20 rounded-xl flex gap-3 items-start group hover:bg-danger/20 transition-colors shadow-sm">
+              <div className="w-2 h-2 rounded-full bg-danger mt-1.5 shrink-0 animate-ping"></div>
+              <div>
+                <h4 className="text-sm font-bold text-danger">Satisfaction Anomaly Flagged</h4>
+                <p className="text-xs text-secondary mt-1">Unsupervised anomaly model detected a statistically significant dip in employee satisfaction (z-score: -2.8).</p>
+              </div>
+            </div>
+
             <div className="p-4 bg-success-light/30 border border-success/20 rounded-xl flex gap-3 items-start group hover:bg-success-light/50 transition-colors">
               <div className="w-2 h-2 rounded-full bg-success mt-1.5 shrink-0"></div>
               <div>
                 <h4 className="text-sm font-bold text-success-dark">Engineering Velocity Peak</h4>
                 <p className="text-xs text-secondary mt-1">Productivity score in Engineering is 92%, driven by recent Agile adoption and automation tools.</p>
-              </div>
-            </div>
-
-            <div className="p-4 bg-warning-light/30 border border-warning/20 rounded-xl flex gap-3 items-start group hover:bg-warning-light/50 transition-colors">
-              <div className="w-2 h-2 rounded-full bg-warning mt-1.5 shrink-0"></div>
-              <div>
-                <h4 className="text-sm font-bold text-warning-dark">Sales Quota Impact</h4>
-                <p className="text-xs text-secondary mt-1">Slight dip in Sales performance (85%) correlated with recent aggressive quota targets. Monitoring recommended.</p>
               </div>
             </div>
 

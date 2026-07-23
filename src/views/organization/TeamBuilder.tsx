@@ -3,39 +3,7 @@ import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 import { Users, Wand2, ShieldCheck, CheckCircle2, Search, SlidersHorizontal, GitMerge, Star, Check, Target, Activity, HeartHandshake } from 'lucide-react';
 
-const mockOptionA = {
-  id: 'alpha',
-  name: 'Option A: High Collaboration',
-  successRate: 94,
-  compatibilityScore: 96,
-  skillBalance: 88,
-  performancePrediction: 92,
-  rationale: 'Excellent past collaboration history on 3 similar projects.',
-  members: [
-    { id: 1, name: 'Alex Carter', role: 'Cloud Architect', match: 98, skills: ['AWS', 'Terraform', 'Kubernetes'] },
-    { id: 2, name: 'Sarah Jenkins', role: 'UX Lead', match: 92, skills: ['Figma', 'User Research', 'Prototyping'] },
-    { id: 3, name: 'David Chen', role: 'Backend Engineer', match: 88, skills: ['Node.js', 'PostgreSQL', 'Redis'] },
-    { id: 4, name: 'Elena Rodriguez', role: 'Product Manager', match: 95, skills: ['Agile', 'Roadmapping', 'Jira'] },
-  ]
-};
-
-const mockOptionB = {
-  id: 'beta',
-  name: 'Option B: Highest Skill Match',
-  successRate: 88,
-  compatibilityScore: 75,
-  skillBalance: 99,
-  performancePrediction: 85,
-  rationale: 'Maximum technical skill coverage, though team has not worked together before.',
-  members: [
-    { id: 5, name: 'Michael Chang', role: 'Sr. Cloud Architect', match: 100, skills: ['AWS', 'Terraform', 'Kubernetes', 'Go'] },
-    { id: 6, name: 'Anita Patel', role: 'UX Designer', match: 95, skills: ['Figma', 'UI/UX'] },
-    { id: 7, name: 'James Wilson', role: 'Backend Lead', match: 96, skills: ['Node.js', 'PostgreSQL', 'GraphQL'] },
-    { id: 4, name: 'Elena Rodriguez', role: 'Product Manager', match: 95, skills: ['Agile', 'Roadmapping', 'Jira'] },
-  ]
-};
-
-const predefinedSkills = ['AWS', 'Node.js', 'React', 'Figma', 'PostgreSQL', 'Agile', 'Terraform'];
+import { mockOptionA, mockOptionB, predefinedSkills } from '../../dummy/organization/teamBuilderData';
 
 export const TeamBuilder: React.FC = () => {
   const [headcount, setHeadcount] = useState(4);

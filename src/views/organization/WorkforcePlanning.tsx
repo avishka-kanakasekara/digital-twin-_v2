@@ -2,59 +2,30 @@ import React, { useState } from 'react';
 import { Card } from '../../components/Card';
 import { Users, TrendingUp, Layers, Target, Activity, Minus, Plus, Equal, AlertCircle, ArrowUpRight, CheckCircle2, X } from 'lucide-react';
 import { ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
-
-const mockHiringAttrition = [
-  { month: 'Jan', hired: 45, attrition: 12 },
-  { month: 'Feb', hired: 52, attrition: 15 },
-  { month: 'Mar', hired: 38, attrition: 18 },
-  { month: 'Apr', hired: 65, attrition: 14 },
-  { month: 'May', hired: 48, attrition: 22 },
-  { month: 'Jun', hired: 55, attrition: 16 },
-];
-
-const mockDeptDistribution = [
-  { name: 'Engineering', employees: 450 },
-  { name: 'Sales', employees: 320 },
-  { name: 'Marketing', employees: 180 },
-  { name: 'Support', employees: 150 },
-  { name: 'HR & Ops', employees: 90 },
-];
-const DEPT_COLORS = ['#3b82f6', '#8b5cf6', '#f59e0b', '#10b981', '#ec4899'];
-
-const mockExperience = [
-  { name: 'Junior (0-2y)', value: 25 },
-  { name: 'Mid (3-5y)', value: 45 },
-  { name: 'Senior (6-9y)', value: 20 },
-  { name: 'Lead (10y+)', value: 10 },
-];
-const EXP_COLORS = ['#93c5fd', '#60a5fa', '#2563eb', '#1e3a8a'];
-
-const mockSkills = [
-  { subject: 'Cloud & DevOps', A: 120, fullMark: 150 },
-  { subject: 'Frontend', A: 98, fullMark: 150 },
-  { subject: 'Backend', A: 86, fullMark: 150 },
-  { subject: 'Data Science', A: 99, fullMark: 150 },
-  { subject: 'UI/UX Design', A: 85, fullMark: 150 },
-  { subject: 'Management', A: 65, fullMark: 150 },
-];
-
-
-const mockSkillShortages = [
-  { rank: '#1', role: 'Cloud Engineer', skill: 'AWS / Kubernetes', dept: 'Engineering', urgency: 'HIGH', gap: -9 },
-  { rank: '#2', role: 'Account Executive', skill: 'Enterprise Sales', dept: 'Sales', urgency: 'MEDIUM', gap: -4 },
-  { rank: '#3', role: 'Data Scientist', skill: 'Machine Learning', dept: 'Data & Analytics', urgency: 'HIGH', gap: -2 },
-];
+import { 
+  mockHiringAttrition, mockDeptDistribution, DEPT_COLORS, 
+  mockExperience, EXP_COLORS, mockSkills, mockSkillShortages 
+} from '../../dummy/organization/workforcePlanningData';
 
 export const WorkforcePlanning: React.FC = () => {
   const [scope, setScope] = useState('Engineering');
   const [horizon, setHorizon] = useState('Next 2 Quarters');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const triggerToast = (message: string) => {
     setToastMessage(message);
     setTimeout(() => {
       setToastMessage(null);
     }, 4000);
+  };
+
+  const handleGenerate = () => {
+    setIsGenerating(true);
+    setTimeout(() => {
+      setIsGenerating(false);
+      triggerToast('Forecast updated successfully using ARIMA & historical models.');
+    }, 1500);
   };
 
   return (
@@ -85,7 +56,7 @@ export const WorkforcePlanning: React.FC = () => {
           <p className="text-secondary text-sm font-medium">Forecast headcount and skill shortages based on attrition, retirement, and growth targets.</p>
         </div>
         
-        <div className="flex gap-4 bg-white/50 backdrop-blur-md p-2 rounded-2xl shadow-sm border border-[var(--border-subtle)]">
+        <div className="flex gap-4 bg-white/50 backdrop-blur-md p-2 rounded-2xl shadow-sm border border-[var(--border-subtle)] items-center">
           <div className="flex items-center gap-2 px-3">
             <span className="text-xs font-semibold text-secondary">Scope:</span>
             <select
@@ -112,9 +83,23 @@ export const WorkforcePlanning: React.FC = () => {
               <option>Next 3 Years</option>
             </select>
           </div>
+          <button 
+            onClick={handleGenerate}
+            disabled={isGenerating}
+            className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white text-xs font-bold px-4 py-2 rounded-xl shadow-md transition-all ml-2"
+          >
+            {isGenerating ? (
+              <span className="flex items-center gap-2"><div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> Generating...</span>
+            ) : (
+              <span className="flex items-center gap-2"><Activity size={14} /> Run Forecast</span>
+            )}
+          </button>
         </div>
       </div>
 
+      {/* Loading Overlay for ML Simulation */}
+      <div className={`transition-opacity duration-300 ${isGenerating ? 'opacity-50 pointer-events-none filter blur-[2px]' : 'opacity-100'}`}>
+      
       {/* Headcount Loss Projection */}
       <Card className="glass p-6">
         <h3 className="text-xs font-black uppercase text-tertiary tracking-widest mb-4">Headcount Loss Projection</h3>
@@ -340,6 +325,7 @@ export const WorkforcePlanning: React.FC = () => {
         </div>
       </div>
       
+      </div> {/* End of ML Simulation Overlay */}
     </div>
   );
 };

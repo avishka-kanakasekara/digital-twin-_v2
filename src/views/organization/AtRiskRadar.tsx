@@ -4,64 +4,7 @@ import { Button } from '../../components/Button';
 import { Search, BrainCircuit, Activity, MessageSquare, Calendar, Compass, UserCheck, CheckCircle2, X } from 'lucide-react';
 import { TwinChatModal } from '../../components/TwinChatModal';
 
-interface EmployeeRisk {
-  name: string;
-  role: string;
-  dept: string;
-  urgency: 'Critical (Key Project)' | 'Critical (Architecture)' | 'High' | 'Moderate';
-  urgencyColor: string;
-  burnoutScore: number;
-  attritionRisk: number;
-  perfCurrent: number;
-  perfPrior: number;
-}
-
-const mockRiskyEmployees: EmployeeRisk[] = [
-  {
-    name: 'Sarah Jenkins',
-    role: 'UX Designer',
-    dept: 'Design',
-    urgency: 'Critical (Key Project)',
-    urgencyColor: 'text-danger bg-danger-light border-danger/20',
-    burnoutScore: 85,
-    attritionRisk: 78,
-    perfCurrent: 3.1,
-    perfPrior: 4.2
-  },
-  {
-    name: 'David Chen',
-    role: 'Backend Engineer',
-    dept: 'Engineering',
-    urgency: 'Critical (Architecture)',
-    urgencyColor: 'text-danger bg-danger-light border-danger/20',
-    burnoutScore: 78,
-    attritionRisk: 65,
-    perfCurrent: 2.9,
-    perfPrior: 3.8
-  },
-  {
-    name: 'Michael Chang',
-    role: 'Product Manager',
-    dept: 'Product',
-    urgency: 'High',
-    urgencyColor: 'text-warning-dark bg-warning-light/50 border-warning/20',
-    burnoutScore: 55,
-    attritionRisk: 30,
-    perfCurrent: 3.6,
-    perfPrior: 3.5
-  },
-  {
-    name: 'Elena Rodriguez',
-    role: 'Sales Lead',
-    dept: 'Sales',
-    urgency: 'Moderate',
-    urgencyColor: 'text-info bg-info/10 border-info/20',
-    burnoutScore: 62,
-    attritionRisk: 45,
-    perfCurrent: 4.0,
-    perfPrior: 4.5
-  }
-];
+import { mockRiskyEmployees, EmployeeRisk } from '../../dummy/organization/radarData';
 
 export const AtRiskRadar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -105,22 +48,22 @@ export const AtRiskRadar: React.FC = () => {
       {/* Top Search bar & headers */}
       <div className="flex justify-between items-end">
         <div>
-          <h1 className="text-3xl font-extrabold mb-2 text-primary tracking-tight">At-Risk Radar & Interventions</h1>
-          <p className="text-secondary text-sm font-medium">Prioritized burnout and attrition risks powered by Uplift Modeling.</p>
+          <h1 className="text-xl font-extrabold mb-1 text-primary tracking-tight">At-Risk Radar & Interventions</h1>
+          <p className="text-secondary text-xs font-medium mt-0.5">Prioritized burnout and attrition risks powered by Uplift Modeling.</p>
         </div>
         
         {/* Search Employees Input */}
-        <div className="relative w-80">
+        <div className="relative w-80 mb-1">
           <input 
             type="text" 
             placeholder="Search employees, skills..." 
-            className="w-full h-10 pl-10 pr-16 bg-white border border-[var(--border-subtle)] rounded-xl text-xs font-semibold text-primary focus:outline-none focus:border-primary shadow-sm"
+            className="w-full h-10 pl-10 pr-16 bg-white border border-[var(--border-subtle)] rounded-xl text-xs font-semibold text-primary focus:outline-none focus:border-primary shadow-sm transition-colors"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <Search size={14} className="absolute left-3.5 top-3.5 text-tertiary" />
+          <Search size={16} className="absolute left-3.5 top-3 text-tertiary" />
           <div className="absolute right-2 top-2">
-            <kbd className="hidden sm:inline-flex items-center justify-center h-6 px-1.5 text-[9px] font-black bg-[var(--bg-main)] border border-[var(--border-subtle)] rounded shadow-sm text-secondary uppercase tracking-wider">Ctrl K</kbd>
+            <kbd className="hidden sm:inline-flex items-center justify-center h-6 px-2 text-[10px] font-bold bg-[var(--bg-main)] border border-[var(--border-subtle)] rounded shadow-sm text-secondary uppercase tracking-wider">Ctrl K</kbd>
           </div>
         </div>
       </div>
@@ -134,8 +77,8 @@ export const AtRiskRadar: React.FC = () => {
           {/* Intervention Effectiveness (Uplift ML Insights) */}
           <Card className="glass p-6 flex flex-col gap-5">
             <div>
-              <h3 className="text-sm font-extrabold text-primary flex items-center gap-2 uppercase tracking-wider">
-                <BrainCircuit size={16} className="text-primary"/> Intervention Effectiveness
+              <h3 className="text-xs font-extrabold text-primary flex items-center gap-2 uppercase tracking-wider">
+                <BrainCircuit size={14} className="text-primary"/> Intervention Effectiveness
               </h3>
               <p className="text-[10px] font-semibold text-secondary uppercase tracking-wider mt-0.5">Uplift ML Insights</p>
             </div>
@@ -190,8 +133,8 @@ export const AtRiskRadar: React.FC = () => {
         <div className="col-span-2 flex flex-col gap-6">
           <Card className="glass p-6 flex flex-col gap-4">
             <div>
-              <h3 className="text-sm font-extrabold text-primary flex items-center gap-2 uppercase tracking-wide">
-                <Activity size={18}/> Urgent Interventions Queue
+              <h3 className="text-xs font-extrabold text-primary flex items-center gap-2 uppercase tracking-wide">
+                <Activity size={16}/> Urgent Interventions Queue
               </h3>
               <p className="text-[10px] font-semibold text-secondary uppercase tracking-wider mt-0.5">Sorted by Urgency (Risk × Impact)</p>
             </div>
@@ -202,39 +145,38 @@ export const AtRiskRadar: React.FC = () => {
                   
                   {/* Row 1: Name and Urgency */}
                   <div className="flex justify-between items-start">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-info flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-info flex items-center justify-center text-white font-bold text-xs shrink-0 shadow-sm">
                         {emp.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <h4 className="font-extrabold text-primary text-base">{emp.name}</h4>
-                        <span className="text-[10px] font-semibold text-secondary">{emp.role} • {emp.dept}</span>
+                        <h4 className="font-bold text-primary text-sm leading-tight">{emp.name}</h4>
+                        <span className="text-[10px] font-medium text-secondary">{emp.role} • {emp.dept}</span>
                       </div>
                     </div>
 
-                    <span className={`text-[10px] font-black px-2.5 py-1 rounded-md border ${emp.urgencyColor}`}>
+                    <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${emp.urgencyColor}`}>
                       {emp.urgency}
                     </span>
                   </div>
 
-                  {/* Row 2: Burnout Score, 90-Day Attrition, Performance */}
-                  <div className="grid grid-cols-3 gap-4 bg-[var(--bg-main)]/50 p-3 rounded-xl border border-[var(--border-subtle)]">
+                  <div className="grid grid-cols-3 gap-4 bg-[var(--bg-main)]/50 p-2.5 rounded-xl border border-[var(--border-subtle)]">
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider">Burnout Score</span>
-                      <span className="text-base font-black text-primary">{emp.burnoutScore}</span>
+                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider mb-0.5">Burnout Score</span>
+                      <span className="text-base font-black text-primary leading-none">{emp.burnoutScore}</span>
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider">90-Day Attrition</span>
-                      <span className="text-base font-black text-danger">{emp.attritionRisk}%</span>
+                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider mb-0.5">90-Day Attrition</span>
+                      <span className="text-base font-black text-danger leading-none">{emp.attritionRisk}%</span>
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider">Performance</span>
-                      <span className="text-xs font-bold text-primary flex items-center gap-1.5">
-                        <span className="text-sm font-black">{emp.perfCurrent}</span>
-                        <span className="text-tertiary line-through">{emp.perfPrior}</span>
-                      </span>
+                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider mb-0.5">Performance</span>
+                      <div className="flex items-baseline gap-1.5 leading-none">
+                        <span className="text-base font-black text-primary">{emp.perfCurrent}</span>
+                        <span className="text-[10px] font-bold text-tertiary line-through">{emp.perfPrior}</span>
+                      </div>
                     </div>
                   </div>
 

@@ -4,7 +4,7 @@ import { Button } from '../../components/Button';
 import { Search, BrainCircuit, Activity, MessageSquare, Calendar, Compass, UserCheck, CheckCircle2, X } from 'lucide-react';
 import { TwinChatModal } from '../../components/TwinChatModal';
 
-import { mockRiskyEmployees, EmployeeRisk } from '../../dummy/organization/radarData';
+import { mockRiskyEmployees, type EmployeeRisk } from '../../dummy/organization/radarData';
 
 export const AtRiskRadar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -48,8 +48,8 @@ export const AtRiskRadar: React.FC = () => {
       {/* Top Search bar & headers */}
       <div className="flex justify-between items-end">
         <div>
-          <h1 className="text-xl font-extrabold mb-1 text-primary tracking-tight">At-Risk Radar & Interventions</h1>
-          <p className="text-secondary text-xs font-medium mt-0.5">Prioritized burnout and attrition risks powered by Uplift Modeling.</p>
+          <h1 className="text-3xl font-bold mb-1 text-slate-900 tracking-tight">At-Risk Radar & Interventions</h1>
+          <p className="text-base text-slate-500 font-medium mt-0.5">Prioritized burnout and attrition risks powered by Uplift Modeling.</p>
         </div>
         
         {/* Search Employees Input */}
@@ -57,13 +57,13 @@ export const AtRiskRadar: React.FC = () => {
           <input 
             type="text" 
             placeholder="Search employees, skills..." 
-            className="w-full h-10 pl-10 pr-16 bg-white border border-[var(--border-subtle)] rounded-xl text-xs font-semibold text-primary focus:outline-none focus:border-primary shadow-sm transition-colors"
+            className="w-full h-10 pl-10 pr-16 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 shadow-sm transition-colors"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <Search size={16} className="absolute left-3.5 top-3 text-tertiary" />
+          <Search size={16} className="absolute left-3.5 top-3 text-slate-400" />
           <div className="absolute right-2 top-2">
-            <kbd className="hidden sm:inline-flex items-center justify-center h-6 px-2 text-[10px] font-bold bg-[var(--bg-main)] border border-[var(--border-subtle)] rounded shadow-sm text-secondary uppercase tracking-wider">Ctrl K</kbd>
+            <kbd className="hidden sm:inline-flex items-center justify-center h-6 px-2 text-[10px] font-bold bg-slate-50 border border-slate-200 rounded shadow-sm text-slate-500 uppercase tracking-wider">Ctrl K</kbd>
           </div>
         </div>
       </div>
@@ -75,55 +75,56 @@ export const AtRiskRadar: React.FC = () => {
         <div className="col-span-1 flex flex-col gap-6">
           
           {/* Intervention Effectiveness (Uplift ML Insights) */}
-          <Card className="glass p-6 flex flex-col gap-5">
+          <Card className="p-6 flex flex-col gap-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
             <div>
-              <h3 className="text-xs font-extrabold text-primary flex items-center gap-2 uppercase tracking-wider">
-                <BrainCircuit size={14} className="text-primary"/> Intervention Effectiveness
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wide">
+                <BrainCircuit size={16} className="text-slate-500"/> Intervention Effectiveness
               </h3>
-              <p className="text-[10px] font-semibold text-secondary uppercase tracking-wider mt-0.5">Uplift ML Insights</p>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1">Uplift ML Insights</p>
             </div>
 
             <div className="flex flex-col gap-4">
               
               {/* Engineering Roles */}
-              <div className="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-[var(--border-subtle)]">
-                <span className="text-[10px] font-black text-secondary uppercase tracking-wider">Engineering Roles</span>
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 shadow-sm">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Engineering Roles</span>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-xs font-bold text-primary">1:1 Check-ins</span>
-                  <span className="text-xs font-black text-success bg-success-light/50 border border-success/20 px-2 py-0.5 rounded-md">-18% Risk</span>
+                  <span className="text-sm font-bold text-slate-800">1:1 Check-ins</span>
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">-18% Risk</span>
                 </div>
-                <p className="text-[10px] text-tertiary font-semibold mt-1">Highest historical ROI</p>
+                <p className="text-[10px] text-slate-400 font-semibold mt-1.5 uppercase tracking-wide">Highest historical ROI</p>
               </div>
 
               {/* Sales Roles */}
-              <div className="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-[var(--border-subtle)]">
-                <span className="text-[10px] font-black text-secondary uppercase tracking-wider">Sales Roles</span>
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 shadow-sm">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Sales Roles</span>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-xs font-bold text-primary">Quota Adjustment</span>
-                  <span className="text-xs font-black text-success bg-success-light/50 border border-success/20 px-2 py-0.5 rounded-md">-22% Risk</span>
+                  <span className="text-sm font-bold text-slate-800">Quota Adjustment</span>
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">-22% Risk</span>
                 </div>
-                <p className="text-[10px] text-tertiary font-semibold mt-1">Effective if done early</p>
+                <p className="text-[10px] text-slate-400 font-semibold mt-1.5 uppercase tracking-wide">Effective if done early</p>
               </div>
 
               {/* Design Roles */}
-              <div className="p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-[var(--border-subtle)]">
-                <span className="text-[10px] font-black text-secondary uppercase tracking-wider">Design Roles</span>
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 shadow-sm">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Design Roles</span>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-xs font-bold text-primary">Role/Project Shift</span>
-                  <span className="text-xs font-black text-success bg-success-light/50 border border-success/20 px-2 py-0.5 rounded-md">-15% Risk</span>
+                  <span className="text-sm font-bold text-slate-800">Role/Project Shift</span>
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">-15% Risk</span>
                 </div>
-                <p className="text-[10px] text-tertiary font-semibold mt-1">Counteracts burnout</p>
+                <p className="text-[10px] text-slate-400 font-semibold mt-1.5 uppercase tracking-wide">Counteracts burnout</p>
               </div>
 
             </div>
           </Card>
 
           {/* System Learning */}
-          <Card className="glass p-6 bg-gradient-to-br from-primary/10 to-info/10 border-primary/20 flex flex-col gap-3 shadow-inner">
-            <h3 className="text-xs font-extrabold text-primary flex items-center gap-2 uppercase tracking-wide">
+          <Card className="p-6 bg-slate-900 border border-slate-800 text-white flex flex-col gap-3 shadow-md rounded-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+            <h3 className="text-sm font-bold flex items-center gap-2 uppercase tracking-wide z-10 text-sky-400">
               <Compass size={16} /> System Learning
             </h3>
-            <p className="text-xs text-secondary leading-relaxed font-semibold">
+            <p className="text-sm text-slate-300 leading-relaxed font-medium z-10">
               Every action you log on this page feeds back into the causal ML model, making future recommendations more accurate.
             </p>
           </Card>
@@ -131,51 +132,51 @@ export const AtRiskRadar: React.FC = () => {
 
         {/* Right Column: Urgent Interventions Queue */}
         <div className="col-span-2 flex flex-col gap-6">
-          <Card className="glass p-6 flex flex-col gap-4">
+          <Card className="p-6 flex flex-col gap-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
             <div>
-              <h3 className="text-xs font-extrabold text-primary flex items-center gap-2 uppercase tracking-wide">
-                <Activity size={16}/> Urgent Interventions Queue
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wide">
+                <Activity size={16} className="text-blue-600"/> Urgent Interventions Queue
               </h3>
-              <p className="text-[10px] font-semibold text-secondary uppercase tracking-wider mt-0.5">Sorted by Urgency (Risk × Impact)</p>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1">Sorted by Urgency (Risk × Impact)</p>
             </div>
 
             <div className="flex flex-col gap-4">
               {filteredEmployees.map((emp) => (
-                <div key={emp.name} className="p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-[var(--border-subtle)] hover:border-primary/30 shadow-sm flex flex-col gap-3 transition-all hover:shadow-md">
+                <div key={emp.name} className="p-5 bg-white rounded-2xl border border-slate-200 hover:border-blue-300 shadow-sm flex flex-col gap-4 transition-all hover:shadow-md">
                   
                   {/* Row 1: Name and Urgency */}
                   <div className="flex justify-between items-start">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-info flex items-center justify-center text-white font-bold text-xs shrink-0 shadow-sm">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold text-sm shrink-0 border border-slate-200 shadow-sm">
                         {emp.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <h4 className="font-bold text-primary text-sm leading-tight">{emp.name}</h4>
-                        <span className="text-[10px] font-medium text-secondary">{emp.role} • {emp.dept}</span>
+                        <h4 className="font-bold text-slate-900 text-base leading-tight">{emp.name}</h4>
+                        <span className="text-xs font-semibold text-slate-500">{emp.role} • {emp.dept}</span>
                       </div>
                     </div>
 
-                    <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${emp.urgencyColor}`}>
+                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border shadow-sm ${emp.urgencyColor}`}>
                       {emp.urgency}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 bg-[var(--bg-main)]/50 p-2.5 rounded-xl border border-[var(--border-subtle)]">
+                  <div className="grid grid-cols-3 gap-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider mb-0.5">Burnout Score</span>
-                      <span className="text-base font-black text-primary leading-none">{emp.burnoutScore}</span>
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Burnout Score</span>
+                      <span className="text-lg font-bold text-slate-900 leading-none">{emp.burnoutScore}</span>
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider mb-0.5">90-Day Attrition</span>
-                      <span className="text-base font-black text-danger leading-none">{emp.attritionRisk}%</span>
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-1">90-Day Attrition</span>
+                      <span className="text-lg font-bold text-rose-600 leading-none">{emp.attritionRisk}%</span>
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-wider mb-0.5">Performance</span>
-                      <div className="flex items-baseline gap-1.5 leading-none">
-                        <span className="text-base font-black text-primary">{emp.perfCurrent}</span>
-                        <span className="text-[10px] font-bold text-tertiary line-through">{emp.perfPrior}</span>
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Performance</span>
+                      <div className="flex items-baseline gap-2 leading-none">
+                        <span className="text-lg font-bold text-slate-900">{emp.perfCurrent}</span>
+                        <span className="text-xs font-semibold text-slate-400 line-through">{emp.perfPrior}</span>
                       </div>
                     </div>
                   </div>
@@ -187,25 +188,25 @@ export const AtRiskRadar: React.FC = () => {
                         size="sm" 
                         variant="secondary" 
                         onClick={() => triggerToast(`Scheduled 1:1 check-in with ${emp.name}. Calendar invite sent and uplift telemetry updated.`)}
-                        className="flex items-center gap-1 bg-white border border-[var(--border-subtle)] text-primary font-bold rounded-lg shadow-sm hover:border-primary transition-all"
+                        className="flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 font-semibold rounded-lg shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all"
                       >
-                        <Calendar size={12}/> Schedule 1:1
+                        <Calendar size={14}/> Schedule 1:1
                       </Button>
                       <Button 
                         size="sm" 
                         variant="ghost" 
                         onClick={() => triggerToast(`Logged direct reach out to ${emp.name}. Causal model is monitoring response.`)}
-                        className="flex items-center gap-1 bg-white border border-[var(--border-subtle)] text-secondary font-bold rounded-lg shadow-sm hover:border-primary transition-all"
+                        className="flex items-center gap-1.5 bg-white border border-slate-200 text-slate-500 font-semibold rounded-lg shadow-sm hover:border-slate-300 hover:text-slate-700 hover:bg-slate-50 transition-all"
                       >
-                        <UserCheck size={12}/> Reach Out
+                        <UserCheck size={14}/> Reach Out
                       </Button>
                     </div>
 
                     <button 
                       onClick={() => setChattingEmployee({ name: emp.name, role: emp.role })}
-                      className="text-xs font-black text-primary hover:text-primary-hover flex items-center gap-1 bg-primary/10 hover:bg-primary/25 border border-primary/20 px-3 py-1.5 rounded-xl transition-all"
+                      className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg transition-all shadow-sm"
                     >
-                      <MessageSquare size={12} className="mr-0.5" /> View AI Analysis
+                      <MessageSquare size={14} className="mr-0.5" /> View AI Analysis
                     </button>
                   </div>
 

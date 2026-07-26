@@ -118,6 +118,8 @@ h1, h2, h3, h4, h5, h6 {
 .text-danger { color: var(--color-danger); }
 .text-warning { color: var(--color-warning); }
 .text-info { color: var(--color-info); }
+.text-inverse { color: var(--text-inverse); }
+.text-white { color: #ffffff; }
 
 .bg-success-light { background-color: var(--color-success-light); }
 .bg-danger-light { background-color: var(--color-danger-light); }

@@ -10,27 +10,27 @@ export const mockBusinessUnits = [
 export const mockOKRs = [
   { 
     id: 1, 
-    title: 'Achieve Market Leadership in AI Solutions', 
-    owner: 'Product Team', 
+    title: 'Get more people to use our App', 
+    owner: 'Marketing Team', 
     progress: 75,
     status: 'on-track',
-    initiatives: ['Launch GenAI Copilot', 'Secure 5 Enterprise deals']
+    initiatives: ['Run Facebook ads', 'Give a discount for new users']
   },
   { 
     id: 2, 
-    title: 'Expand into Regional Market', 
-    owner: 'GTM Team', 
+    title: 'Make the App faster', 
+    owner: 'Tech Team', 
     progress: 45,
     status: 'at-risk',
-    initiatives: ['Open Kandy office', 'Localize product for SL']
+    initiatives: ['Fix the slow login screen', 'Update the server']
   },
   { 
     id: 3, 
-    title: 'Achieve Carbon Neutrality', 
-    owner: 'Operations', 
+    title: 'Make customers happy', 
+    owner: 'Support Team', 
     progress: 90,
     status: 'on-track',
-    initiatives: ['Transition to renewable energy', 'Implement green cloud architecture']
+    initiatives: ['Reply to emails in 1 hour', 'Add a live chat button']
   }
 ];
 

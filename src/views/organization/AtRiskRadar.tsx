@@ -50,26 +50,11 @@ export const AtRiskRadar: React.FC = () => {
         </div>
       )}
 
-      {/* Top Search bar & headers */}
+      {/* Top headers */}
       <div className="flex justify-between items-end">
         <div>
           <h1 className="text-3xl font-extrabold mb-1 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 tracking-tight">At-Risk Radar & Interventions</h1>
           <p className="text-base text-slate-500 font-medium mt-0.5">Prioritized burnout and attrition risks powered by Uplift Modeling.</p>
-        </div>
-        
-        {/* Search Employees Input */}
-        <div className="relative w-80 mb-1">
-          <input 
-            type="text" 
-            placeholder="Search employees, skills..." 
-            className="w-full h-10 pl-10 pr-16 bg-white/70 backdrop-blur-md border border-slate-200/60 rounded-xl text-sm font-semibold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 shadow-sm transition-all"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <Search size={16} className="absolute left-3.5 top-3 text-slate-400" />
-          <div className="absolute right-2 top-2">
-            <kbd className="hidden sm:inline-flex items-center justify-center h-6 px-2 text-[10px] font-bold bg-slate-100/80 border border-slate-200/80 rounded shadow-sm text-slate-500 uppercase tracking-wider">Ctrl K</kbd>
-          </div>
         </div>
       </div>
 

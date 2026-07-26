@@ -12,7 +12,7 @@ export interface EmployeeRisk {
 
 export const mockRiskyEmployees: EmployeeRisk[] = [
   {
-    name: 'Sarah Jenkins',
+    name: 'Sanduni Silva',
     role: 'UX Designer',
     dept: 'Design',
     urgency: 'Critical (Key Project)',
@@ -23,7 +23,7 @@ export const mockRiskyEmployees: EmployeeRisk[] = [
     perfPrior: 4.2
   },
   {
-    name: 'David Chen',
+    name: 'Nuwan Perera',
     role: 'Backend Engineer',
     dept: 'Engineering',
     urgency: 'Critical (Architecture)',
@@ -34,7 +34,7 @@ export const mockRiskyEmployees: EmployeeRisk[] = [
     perfPrior: 3.8
   },
   {
-    name: 'Michael Chang',
+    name: 'Lahiru Kumara',
     role: 'Product Manager',
     dept: 'Product',
     urgency: 'High',
@@ -45,7 +45,7 @@ export const mockRiskyEmployees: EmployeeRisk[] = [
     perfPrior: 3.5
   },
   {
-    name: 'Elena Rodriguez',
+    name: 'Anuradha Fernando',
     role: 'Sales Lead',
     dept: 'Sales',
     urgency: 'Moderate',

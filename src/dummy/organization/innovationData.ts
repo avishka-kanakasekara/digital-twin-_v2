@@ -1,20 +1,20 @@
 export const mockTopIdeas = [
   {
     id: 1,
-    title: 'LLM-Assisted Code Reviews',
-    authorInitials: 'JD',
+    title: 'Smart Agri-Data Platform',
+    authorInitials: 'KB',
     authorBg: 'from-success to-primary',
-    description: 'Integrate an LLM agent into our CI/CD pipeline to automatically flag security issues...',
+    description: 'Integrate local weather data and crop cycles to automatically flag optimal harvesting times for Kegalle farmers...',
     impactScore: 94,
     feasibility: 'High',
     status: 'In Review'
   },
   {
     id: 2,
-    title: 'Unified Customer Data Layer',
+    title: 'Unified District Health Layer',
     authorInitials: 'AM',
     authorBg: 'from-info to-tertiary',
-    description: 'Create a single GraphQL federation layer for all legacy CRM endpoints...',
+    description: 'Create a single data federation layer for all Kegalle hospital endpoints to manage patient transfers...',
     impactScore: 88,
     feasibility: 'Medium',
     status: 'Approved',
@@ -25,16 +25,16 @@ export const mockTopIdeas = [
 export const mockCommunities = [
   {
     id: 1,
-    name: 'Data Science Guild',
-    members: 142,
+    name: 'Kegalle Data Guild',
+    members: 42,
     joined: false,
     icon: 'TrendingUp',
     bgClass: 'bg-info/10 text-info'
   },
   {
     id: 2,
-    name: 'Microservices Architecture',
-    members: 89,
+    name: 'Smart Infrastructure',
+    members: 29,
     joined: true,
     icon: 'Share2',
     bgClass: 'bg-primary/10 text-primary'

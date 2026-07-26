@@ -1,10 +1,10 @@
-export const mockLocations = ['New York, HQ', 'London', 'Singapore', 'Tokyo', 'Berlin'];
+export const mockLocations = ['Kegalle Branch', 'Colombo HQ', 'Kandy', 'Galle', 'Kurunegala'];
 
 export const mockBusinessUnits = [
-  { name: 'Core Product', head: 'Sarah Jenkins', headcount: 450 },
-  { name: 'Enterprise Solutions', head: 'David Chen', headcount: 320 },
-  { name: 'Emerging Tech', head: 'Elena Rodriguez', headcount: 150 },
-  { name: 'Global Operations', head: 'Michael Chang', headcount: 328 },
+  { name: 'Core Product', head: 'Kasun Bandara', headcount: 150 },
+  { name: 'Enterprise Solutions', head: 'Nuwan Perera', headcount: 120 },
+  { name: 'Emerging Tech', head: 'Sanduni Silva', headcount: 50 },
+  { name: 'Regional Operations', head: 'Lahiru Kumara', headcount: 128 },
 ];
 
 export const mockOKRs = [
@@ -18,11 +18,11 @@ export const mockOKRs = [
   },
   { 
     id: 2, 
-    title: 'Expand into APAC Market', 
+    title: 'Expand into Regional Market', 
     owner: 'GTM Team', 
     progress: 45,
     status: 'at-risk',
-    initiatives: ['Open Singapore office', 'Localize product for JP']
+    initiatives: ['Open Kandy office', 'Localize product for SL']
   },
   { 
     id: 3, 

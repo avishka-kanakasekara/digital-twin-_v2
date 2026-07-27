@@ -652,7 +652,7 @@ export const OrganizationContext: React.FC = () => {
                                   color: ms.completed ? 'white' : '#94a3b8',
                                   borderColor: ms.completed ? '#10b981' : '#e2e8f0'
                               }}>
-                                {ms.completed ? <CheckCircle size={16} weight="bold" /> : <span className="text-xs font-bold">{idx + 1}</span>}
+                                {ms.completed ? <CheckCircle size={16} strokeWidth={2.5} /> : <span className="text-xs font-bold">{idx + 1}</span>}
                               </div>
                               
                               <div className="flex-1 flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md bg-white cursor-pointer" style={{

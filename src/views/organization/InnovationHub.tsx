@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/Card';
-import { Button } from '../../components/Button';
-import { Lightbulb, Network, BrainCircuit, Rocket, TrendingUp, Sparkles, MessageSquare, ChevronRight, Share2 } from 'lucide-react';
+import { Lightbulb, Network, BrainCircuit, Rocket, TrendingUp, Sparkles, ChevronRight, Share2 } from 'lucide-react';
 import { mockTopIdeas, mockCommunities } from '../../dummy/organization/innovationData';
 
 export const InnovationHub: React.FC = () => {

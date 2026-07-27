@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Users, Activity, Crosshair, BarChart3, AlertTriangle, Users2, Search, Building2, UserCircle } from 'lucide-react';
+import { LayoutDashboard, Users, Activity, Crosshair, BarChart3, AlertTriangle, Users2, Search, Building2, UserCircle, Target, Briefcase, Lightbulb } from 'lucide-react';
 import { SearchModal } from './SearchModal';
 import { Modal } from './Modal';
 
@@ -11,9 +11,12 @@ export const Layout: React.FC = () => {
 
   const orgNavItems = [
     { name: 'Executive Dashboard', path: '/', icon: <LayoutDashboard size={20} /> },
+    { name: 'Strategy & Context', path: '/context', icon: <Target size={20} /> },
     { name: 'Workforce Intelligence', path: '/workforce', icon: <BarChart3 size={20} /> },
     { name: 'Organization Health', path: '/radar', icon: <AlertTriangle size={20} /> },
     { name: 'Team Builder', path: '/team-builder', icon: <Users2 size={20} /> },
+    { name: 'Talent Marketplace', path: '/talent-marketplace', icon: <Briefcase size={20} /> },
+    { name: 'Innovation Hub', path: '/innovation-hub', icon: <Lightbulb size={20} /> },
     { name: 'Organizational Simulation', path: '/simulator', icon: <Activity size={20} /> },
   ];
 

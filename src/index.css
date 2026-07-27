@@ -118,6 +118,8 @@ h1, h2, h3, h4, h5, h6 {
 .text-danger { color: var(--color-danger); }
 .text-warning { color: var(--color-warning); }
 .text-info { color: var(--color-info); }
+.text-inverse { color: var(--text-inverse); }
+.text-white { color: #ffffff; }
 
 .bg-success-light { background-color: var(--color-success-light); }
 .bg-danger-light { background-color: var(--color-danger-light); }
@@ -237,13 +239,16 @@ h1, h2, h3, h4, h5, h6 {
 .mr-2 { margin-right: 0.5rem; }
 
 .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+.px-12 { padding-left: 3rem; padding-right: 3rem; }
 .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
 .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 .pr-2 { padding-right: 0.5rem; }
 .pr-14 { padding-right: 3.5rem; }
 .pl-6 { padding-left: 1.5rem; }
 .p-0 { padding: 0; }
-.p-5 { padding: 1.25rem; }
 .p-5 { padding: 1.25rem; }
 .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
 .pb-4 { padding-bottom: 1rem; }
@@ -353,10 +358,6 @@ h1, h2, h3, h4, h5, h6 {
 .shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); }
 .drop-shadow-sm { filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05)); }
 
-/* Gradient backgrounds utility for avatars */
-.bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--color-primary), var(--color-secondary)); }
-.bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary)); }
-.bg-gradient-to-r { background-image: linear-gradient(to right, var(--color-primary), var(--color-info)); }
 
 /* Animations */
 @keyframes fadeIn {

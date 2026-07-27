@@ -88,77 +88,90 @@ export const TwinChatModal: React.FC<TwinChatModalProps> = ({ isOpen, onClose, e
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={`Chat with ${employeeName}'s AI Twin`}>
-      <div className="flex flex-col h-[600px] w-full bg-[var(--bg-main)]" style={{ minWidth: '520px' }}>
+      <div className="flex flex-col h-[500px] w-full border border-[var(--border-subtle)] rounded-2xl overflow-hidden bg-gray-50 shadow-inner">
         
         {/* Header - Solid and Clean */}
-        <div className="flex items-center gap-4 p-5 bg-white border-b border-[var(--border-subtle)] -mx-6 -mt-6 rounded-t-lg z-10 relative">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-primary to-info flex items-center justify-center text-white text-lg font-black shrink-0 shadow-sm border border-white">
+        <div className="flex items-center bg-white border-b border-[var(--border-subtle)] z-10" style={{ padding: '16px 20px', gap: '16px' }}>
+          <div className="bg-primary flex items-center justify-center text-white font-bold shrink-0 shadow-sm" style={{ width: '42px', height: '42px', borderRadius: '50%', fontSize: '15px' }}>
             {employeeName.split(' ').map(n => n[0]).join('')}
           </div>
           <div className="flex flex-col">
-            <h4 className="font-extrabold text-base text-primary leading-tight">{employeeName}</h4>
-            <p className="text-[10px] font-black text-secondary uppercase tracking-widest mt-1">{employeeRole}</p>
+            <h4 className="font-bold text-primary leading-tight" style={{ fontSize: '15px' }}>{employeeName}</h4>
+            <p className="font-bold text-secondary uppercase tracking-widest" style={{ fontSize: '10px', marginTop: '2px' }}>{employeeRole}</p>
           </div>
-          <div className="ml-auto flex items-center gap-2 bg-success-light border border-success/20 text-success-dark text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
-            <div className="w-1.5 h-1.5 bg-success rounded-full animate-pulse"></div>
-            Twin Calibrated
+          <div className="ml-auto flex items-center bg-success-light border text-success font-bold shadow-sm" style={{ gap: '6px', padding: '6px 12px', borderRadius: '999px', fontSize: '10px', borderColor: 'rgba(16,185,129,0.2)' }}>
+            <Sparkles size={10} className="text-success" />
+            Twin Active
           </div>
         </div>
 
         {/* Messages Container */}
-        <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-5 -mx-6 bg-[var(--bg-main)] relative" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex-1 overflow-y-auto flex flex-col bg-[var(--bg-main)]" style={{ scrollbarWidth: 'none', gap: '20px', padding: '20px' }}>
           {messages.map((msg, idx) => (
-            <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} items-end gap-3 animate-slide-up`} style={{ animationDelay: `${Math.min(idx * 50, 200)}ms` }}>
+            <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} items-end animate-slide-up`} style={{ gap: '12px', animationDelay: `${Math.min(idx * 50, 200)}ms` }}>
               
               {msg.role === 'ai' && (
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm border border-[var(--border-subtle)] mb-1">
+                <div className="bg-white flex items-center justify-center text-primary shrink-0 shadow-sm border border-[var(--border-subtle)]" style={{ width: '28px', height: '28px', borderRadius: '50%', marginBottom: '4px' }}>
                   <Bot size={14}/>
                 </div>
               )}
               
-              <div className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed shadow-sm font-semibold border ${
+              <div className={`max-w-[85%] text-[13px] leading-relaxed shadow-sm font-medium ${
                 msg.role === 'user' 
-                  ? 'bg-primary text-white border-primary rounded-br-sm' 
-                  : 'bg-white text-primary border-[var(--border-subtle)] rounded-bl-sm'
-              }`}>
+                  ? 'bg-primary text-white' 
+                  : 'bg-white text-primary border border-[var(--border-subtle)]'
+              }`} style={{ 
+                padding: '12px 16px', 
+                borderRadius: '16px', 
+                borderBottomLeftRadius: msg.role === 'ai' ? '4px' : '16px',
+                borderBottomRightRadius: msg.role === 'user' ? '4px' : '16px'
+              }}>
                 {msg.text}
               </div>
             </div>
           ))}
           {isTyping && (
-            <div className="flex justify-start items-end gap-3 animate-fade-in">
-              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm border border-[var(--border-subtle)] mb-1">
+            <div className="flex justify-start items-end animate-fade-in" style={{ gap: '12px' }}>
+              <div className="bg-white flex items-center justify-center text-primary shrink-0 shadow-sm border border-[var(--border-subtle)]" style={{ width: '28px', height: '28px', borderRadius: '50%', marginBottom: '4px' }}>
                 <Bot size={14}/>
               </div>
-              <div className="bg-white text-tertiary border border-[var(--border-subtle)] rounded-2xl rounded-bl-sm p-4 text-xs flex items-center gap-1.5 shadow-sm h-12">
-                <span className="w-2 h-2 bg-primary/40 rounded-full animate-bounce"></span>
-                <span className="w-2 h-2 bg-primary/40 rounded-full animate-bounce [animation-delay:0.2s]"></span>
-                <span className="w-2 h-2 bg-primary/40 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+              <div className="bg-white border border-[var(--border-subtle)] flex items-center shadow-sm" style={{ padding: '12px 16px', borderRadius: '16px', borderBottomLeftRadius: '4px', height: '40px', gap: '6px' }}>
+                <span className="bg-secondary animate-bounce" style={{ width: '6px', height: '6px', borderRadius: '50%' }}></span>
+                <span className="bg-secondary animate-bounce [animation-delay:0.2s]" style={{ width: '6px', height: '6px', borderRadius: '50%' }}></span>
+                <span className="bg-secondary animate-bounce [animation-delay:0.4s]" style={{ width: '6px', height: '6px', borderRadius: '50%' }}></span>
               </div>
             </div>
           )}
         </div>
 
-        {/* Suggestions & Input Area - Solid and Clean */}
-        <div className="flex flex-col gap-3 pt-4 border-t border-[var(--border-subtle)] -mx-6 px-6 bg-white z-10 relative">
+        {/* Suggestions & Input Area */}
+        <div className="flex flex-col bg-white z-10 border-t border-[var(--border-subtle)]" style={{ padding: '16px 20px', gap: '12px' }}>
           
-          <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex overflow-x-auto" style={{ scrollbarWidth: 'none', gap: '8px', paddingBottom: '4px' }}>
             {suggestions.map(s => (
               <button 
                 key={s} 
                 onClick={() => handleSuggestion(s)}
-                className="text-[11px] font-bold text-primary bg-[var(--bg-main)] border border-[var(--border-subtle)] hover:bg-primary hover:text-white px-4 py-2 rounded-full shrink-0 transition-all flex items-center gap-1.5 shadow-sm"
+                className="text-[11px] font-medium text-secondary bg-white border border-[var(--border-subtle)] hover:bg-[var(--bg-main)] hover:text-primary shrink-0 transition-all flex items-center shadow-sm"
+                style={{ padding: '6px 14px', borderRadius: '8px', gap: '6px' }}
               >
-                <Sparkles size={12}/> {s}
+                {s}
               </button>
             ))}
           </div>
 
-          <div className="flex items-center gap-3 relative pb-4 pt-1">
+          <div className="flex items-center relative" style={{ gap: '8px' }}>
             <input 
               type="text" 
-              placeholder={`Ask ${employeeName}'s AI Twin...`} 
-              className="w-full h-12 rounded-xl border border-[var(--border-subtle)] pl-4 pr-12 text-[13px] font-bold text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 bg-[var(--bg-main)] placeholder-tertiary shadow-sm transition-all"
+              placeholder={`Message ${employeeName}'s AI Twin...`} 
+              className="w-full text-sm text-primary focus:outline-none focus:border-primary bg-[var(--bg-main)] placeholder-tertiary transition-all"
+              style={{ 
+                height: '44px', 
+                borderRadius: '999px', 
+                border: '1px solid var(--border-subtle)', 
+                paddingLeft: '20px', 
+                paddingRight: '48px' 
+              }}
               value={chatInput}
               onChange={e => setChatInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleSend()}
@@ -166,13 +179,14 @@ export const TwinChatModal: React.FC<TwinChatModalProps> = ({ isOpen, onClose, e
             <button 
               onClick={handleSend}
               disabled={!chatInput.trim()}
-              className={`absolute right-3 top-2.5 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 ${
+              className={`absolute flex items-center justify-center transition-all duration-200 ${
                 chatInput.trim()
-                  ? 'bg-primary text-white shadow-md hover:bg-primary-hover active:scale-95'
-                  : 'bg-white border border-[var(--border-subtle)] text-tertiary cursor-not-allowed'
+                  ? 'bg-primary text-white hover:bg-primary-hover shadow-sm transform hover:scale-105 active:scale-95'
+                  : 'bg-transparent text-tertiary cursor-not-allowed'
               }`}
+              style={{ right: '6px', top: '50%', transform: 'translateY(-50%)', width: '32px', height: '32px', borderRadius: '50%' }}
             >
-              <Send size={14} className={chatInput.trim() ? '-ml-0.5' : ''} />
+              <Send size={14} style={{ marginLeft: chatInput.trim() ? '-2px' : '0' }} />
             </button>
           </div>
           

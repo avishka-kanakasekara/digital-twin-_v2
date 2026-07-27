@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/Card';
-import { Button } from '../../components/Button';
-import { Search, BrainCircuit, Activity, MessageSquare, Calendar, Compass, UserCheck, CheckCircle2, X, Target } from 'lucide-react';
+import { BrainCircuit, Activity, Calendar, Compass, UserCheck, CheckCircle2, X, Target } from 'lucide-react';
 import { TwinChatModal } from '../../components/TwinChatModal';
 
-import { mockRiskyEmployees, type EmployeeRisk } from '../../dummy/organization/radarData';
+import { mockRiskyEmployees } from '../../dummy/organization/radarData';
 
 export const AtRiskRadar: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery] = useState('');
   const [chattingEmployee, setChattingEmployee] = useState<{ name: string; role: string } | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 

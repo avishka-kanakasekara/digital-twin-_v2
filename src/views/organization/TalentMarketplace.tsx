@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/Card';
-import { Button } from '../../components/Button';
-import { Briefcase, BrainCircuit, Users, Target, CheckCircle2, ChevronRight, Plus, Sparkles, Network } from 'lucide-react';
+import { Briefcase, BrainCircuit, Users, Target, CheckCircle2, Plus, Sparkles, Network } from 'lucide-react';
 import { mockGigs, mockMentors } from '../../dummy/organization/talentMarketplaceData';
 
 export const TalentMarketplace: React.FC = () => {

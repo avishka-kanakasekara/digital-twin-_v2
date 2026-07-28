@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/Card';
 import { 
-  Building, Globe, Briefcase, 
+  Briefcase, 
   Target, BrainCircuit, Leaf, CheckCircle, 
-  ChevronRight, MapPin, Network, Sparkles,
-   Flag, Bot, Cpu, Layers, Rocket, AlertTriangle, Activity
+  ChevronRight, Flag, Bot, Cpu, Layers, Rocket, AlertTriangle, Activity
 } from 'lucide-react';
 
-import { mockLocations, mockBusinessUnits, mockOKRs, mockAIReadiness, mockCapabilities, mockTransformations } from '../../dummy/organization/contextData';
+import { mockOKRs, mockAIReadiness, mockCapabilities, mockTransformations } from '../../dummy/organization/contextData';
 
 export const OrganizationContext: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'profile' | 'strategy' | 'ai' | 'capability' | 'transformation'>('profile');
+  const [activeTab, setActiveTab] = useState<'strategy' | 'ai' | 'capability' | 'transformation'>('strategy');
 
   const tabs = [
-    { id: 'profile', label: 'Company Profile', icon: Building, desc: 'Basic details like company size, departments, and office locations.' },
     { id: 'strategy', label: 'Business Goals', icon: Target, desc: 'The strategic targets, KPIs, and ESG goals the company is aiming to achieve.' },
     { id: 'ai', label: 'AI Readiness', icon: Bot, desc: 'How prepared the workforce is to adopt AI and automation tools.' },
     { id: 'capability', label: 'Skills Map', icon: Layers, desc: 'A breakdown of current employee skills versus missing required skills.' },
@@ -79,134 +77,6 @@ export const OrganizationContext: React.FC = () => {
       </div>
 
       <div className="w-full">
-        {activeTab === 'profile' && (
-          <div className="grid grid-cols-3 gap-6 animate-fade-in">
-            <div className="col-span-2 flex flex-col gap-6">
-              
-              <Card className="glass flex flex-col p-6 gap-6 relative overflow-hidden transition-all duration-300 hover:shadow-lg rounded-3xl border-white/60" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }}>
-                {/* Decorative glow */}
-                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl -z-10" style={{ backgroundColor: 'rgba(79, 70, 229, 0.08)' }}></div>
-                
-                <div className="flex items-center gap-4 border-b border-[var(--border-subtle)] pb-5 z-10">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg" style={{ background: 'linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)' }}>
-                    <Building size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-extrabold text-slate-800 tracking-tight">Core Identity</h3>
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-0.5">Industry and operational classification</p>
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-6 z-10">
-                  <div className="p-4 rounded-2xl border transition-colors shadow-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(226, 232, 240, 0.8)' }}>
-                    <p className="text-[10px] font-extrabold uppercase tracking-widest mb-3" style={{ color: '#94a3b8' }}>Industry Sector</p>
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-full shadow-sm" style={{ width: '10px', height: '10px', backgroundColor: '#3b82f6' }}></div>
-                      <p className="text-sm font-black text-slate-800">Enterprise Software / B2B SaaS</p>
-                    </div>
-                  </div>
-                  <div className="p-4 rounded-2xl border transition-colors shadow-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(226, 232, 240, 0.8)' }}>
-                    <p className="text-[10px] font-extrabold uppercase tracking-widest mb-3" style={{ color: '#94a3b8' }}>Operating Model</p>
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-full shadow-sm" style={{ width: '10px', height: '10px', backgroundColor: '#8b5cf6' }}></div>
-                      <p className="text-sm font-black text-slate-800">Hybrid Matrix / Product-Led</p>
-                    </div>
-                  </div>
-                  <div className="col-span-2 mt-2">
-                    <p className="text-[10px] font-extrabold uppercase tracking-widest mb-3" style={{ color: '#94a3b8' }}>Strategy Statement</p>
-                    <div className="relative rounded-2xl overflow-hidden shadow-sm border" style={{ borderColor: 'rgba(226, 232, 240, 0.8)' }}>
-                      <div className="absolute left-0 top-0 bottom-0" style={{ width: '5px', background: 'linear-gradient(180deg, #4f46e5 0%, #3b82f6 100%)' }}></div>
-                      <p className="pl-8 pr-6 py-5 text-sm font-bold italic leading-relaxed" style={{ backgroundColor: 'rgba(248, 250, 252, 0.8)', color: '#334155' }}>
-                        "To empower global enterprises with predictive intelligence, bridging the gap between raw data and actionable operational foresights."
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="glass flex flex-col p-6 gap-6 transition-all duration-300 hover:shadow-lg rounded-3xl border-white/60" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }}>
-                <div className="flex items-center gap-4 z-10 border-b border-[var(--border-subtle)] pb-5">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-slate-600 shadow-inner border border-slate-200/80" style={{ backgroundColor: '#f8fafc' }}>
-                    <Network size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-extrabold text-slate-800 tracking-tight">Business Units</h3>
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-0.5">Internal organizational structure</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-5">
-                  {mockBusinessUnits.map((bu, i) => (
-                    <div key={i} className="flex flex-col gap-3 p-5 rounded-2xl border shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(226, 232, 240, 0.8)' }}>
-                      <div className="flex justify-between items-start">
-                        <span className="font-black text-slate-800 text-sm group-hover:text-indigo-600 transition-colors">{bu.name}</span>
-                        <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-lg border shadow-inner" style={{ color: '#4f46e5', backgroundColor: '#eef2ff', borderColor: '#c7d2fe' }}>{bu.headcount} EMP</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs font-bold mt-1" style={{ color: '#64748b' }}>
-                        <Briefcase size={14} style={{ color: '#94a3b8' }} /> {bu.head}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
-
-            <div className="col-span-1 flex flex-col gap-6">
-              <Card className="glass flex flex-col p-6 gap-6 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-3xl" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 40px -10px rgba(30, 27, 75, 0.5)' }}>
-                <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl -z-0" style={{ backgroundColor: 'rgba(139, 92, 246, 0.2)' }}></div>
-                
-                <div className="flex items-center gap-4 z-10">
-                  <div className="w-12 h-12 rounded-2xl backdrop-blur-md flex items-center justify-center text-white border shadow-inner" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.2)' }}>
-                    <Sparkles size={24} className="text-purple-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-black text-white tracking-tight">Digital Maturity</h3>
-                    <p className="text-[11px] font-bold uppercase tracking-widest mt-1" style={{ color: 'rgba(255,255,255,0.6)' }}>Transformation Level</p>
-                  </div>
-                </div>
-                
-                <div className="mt-2 z-10 flex flex-col h-full justify-between">
-                  <div>
-                    <div className="flex justify-between items-baseline mb-4">
-                      <span className="text-4xl font-black tracking-tighter text-white drop-shadow-md">Level 4</span>
-                      <span className="text-[10px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-lg border" style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#a78bfa', borderColor: 'rgba(167, 139, 250, 0.3)' }}>Optimized</span>
-                    </div>
-                    
-                    <div className="w-full h-3 rounded-full overflow-hidden shadow-inner mb-6" style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>
-                      <div className="h-full rounded-full relative" style={{ width: '80%', background: 'linear-gradient(90deg, #6366f1 0%, #a855f7 100%)', boxShadow: '0 0 10px rgba(168, 85, 247, 0.5)' }}>
-                        <div className="absolute top-0 right-0 bottom-0 w-8 bg-white/30 skew-x-12 animate-[shimmer_2s_infinite]"></div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <p className="text-[12px] leading-relaxed font-bold p-4 rounded-2xl border backdrop-blur-md shadow-inner" style={{ color: 'rgba(255,255,255,0.85)', backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}>
-                    The organization utilizes AI-driven workflows and continuous delivery. Ready for full digital twin simulation capabilities.
-                  </p>
-                </div>
-              </Card>
-
-              <Card className="glass flex flex-col p-6 gap-5 transition-all duration-300 hover:shadow-lg rounded-3xl border-white/60" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }}>
-                <div className="flex items-center gap-4 border-b border-[var(--border-subtle)] pb-5">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-inner border" style={{ backgroundColor: '#ecfdf5', color: '#10b981', borderColor: '#a7f3d0' }}>
-                    <Globe size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-extrabold text-slate-800 tracking-tight">Global Presence</h3>
-                    <p className="text-[11px] font-bold uppercase tracking-widest mt-0.5" style={{ color: '#64748b' }}>Active operational regions</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-3 mt-1">
-                  {mockLocations.map((loc, i) => (
-                    <div key={i} className="flex items-center gap-2 px-4 py-2.5 rounded-full border shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all cursor-pointer group" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(226, 232, 240, 0.8)' }}>
-                      <MapPin size={14} style={{ color: '#94a3b8' }} className="group-hover:text-emerald-500 transition-colors" />
-                      <span className="text-[11px] font-black text-slate-700 uppercase tracking-wider">{loc}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
-          </div>
-        )}
-
         {activeTab === 'strategy' && (
           <div className="flex flex-col gap-6 animate-fade-in">
             <div className="grid grid-cols-3 gap-6">

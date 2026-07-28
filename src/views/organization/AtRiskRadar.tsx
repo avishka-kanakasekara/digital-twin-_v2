@@ -138,7 +138,8 @@ export const AtRiskRadar: React.FC = () => {
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1">Sorted by Urgency (Risk × Impact)</p>
             </div>
 
-            <div className="flex flex-col gap-5">              {filteredEmployees.map((emp) => (
+            <div className="flex flex-col gap-5">
+              {filteredEmployees.map((emp) => (
                 <div key={emp.name} className="relative flex items-center gap-4 lg:gap-8 p-4 bg-white rounded-xl border border-subtle hover:border-gray-300 hover:shadow-md transition-all duration-200 group">
                   
                   {/* Glowing left edge indicator */}

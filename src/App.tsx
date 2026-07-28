@@ -6,6 +6,8 @@ import { EmployeeTwin } from './views/employee/EmployeeTwin';
 import { OrgSimulator } from './views/organization/OrgSimulator';
 import { AtRiskRadar } from './views/organization/AtRiskRadar';
 import { CareerCoach } from './views/employee/CareerCoach';
+import { GamificationHub } from './views/employee/GamificationHub';
+import { LearningHub } from './views/employee/LearningHub';
 import { WorkforcePlanning } from './views/organization/WorkforcePlanning';
 import { TeamBuilder } from './views/organization/TeamBuilder';
 import { TalentMarketplace } from './views/organization/TalentMarketplace';
@@ -20,6 +22,8 @@ function App() {
           <Route path="context" element={<OrganizationContext />} />
           <Route path="employee-twin" element={<EmployeeTwin />} />
           <Route path="career-coach" element={<CareerCoach />} />
+          <Route path="gamification-hub" element={<GamificationHub />} />
+          <Route path="learning-hub" element={<LearningHub />} />
           <Route path="radar" element={<AtRiskRadar />} />
           <Route path="simulator" element={<OrgSimulator />} />
           <Route path="workforce" element={<WorkforcePlanning />} />

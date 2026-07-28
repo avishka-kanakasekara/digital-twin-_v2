@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Users, Activity, Crosshair, BarChart3, AlertTriangle, Users2, Search, Building2, UserCircle, Target, Briefcase, Lightbulb } from 'lucide-react';
+import { LayoutDashboard, Users, Activity, Crosshair, BarChart3, AlertTriangle, Users2, Search, Building2, UserCircle, Target, Briefcase, Lightbulb, Trophy, Brain } from 'lucide-react';
 import { SearchModal } from './SearchModal';
 import { Modal } from './Modal';
 
@@ -23,6 +23,8 @@ export const Layout: React.FC = () => {
   const empNavItems = [
     { name: 'Personal Dashboard', path: '/employee-twin', icon: <Users size={20} /> },
     { name: 'Career Coach', path: '/career-coach', icon: <Crosshair size={20} /> },
+    { name: 'Gamification Hub', path: '/gamification-hub', icon: <Trophy size={20} /> },
+    { name: 'Learning Hub', path: '/learning-hub', icon: <Brain size={20} /> },
   ];
 
   return (

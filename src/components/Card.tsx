@@ -9,7 +9,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className = '', glass = true, style }) => {
   return (
-    <div className={`${glass ? 'glass' : 'bg-surface-solid border-subtle shadow-sm'} rounded-xl p-6 ${className} transition-all duration-300 hover:shadow-lg hover:-translate-y-1`} style={style}>
+    <div className={`${glass ? 'glass' : 'bg-surface-solid border-subtle shadow-md'} rounded-[var(--radius-lg)] p-8 ${className} transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden`} style={style}>
       {children}
     </div>
   );
